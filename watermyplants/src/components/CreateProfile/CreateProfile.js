@@ -50,7 +50,17 @@ const formikHOC = withFormik({
   validationSchema: Yup.object().shape({
     username: Yup.string().required('Not a good username!'),
     password: Yup.string().min(8).required('Must be longer than 8 characters!')
-  })
+  }),
+  handleSubmit(values, { setStatus, resetForm }) {
+    axios
+      .post("https://reqres.in/api/users", values)
+      .then(res => {
+        console.log("handleSubmit: then: res: ", res);
+        setStatus(res.data);
+        resetForm();
+      })
+      .catch(err => console.error("handleSubmit: catch: err: ", err));
+  }
 })
 
 const FormFieldWithFormik = formikHOC(CreateProfile)
