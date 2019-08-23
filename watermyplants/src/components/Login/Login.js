@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withFormik, Form, Field, Formik } from 'formik';
 import { Link } from 'react-router-dom'
 import { underline } from 'ansi-colors';
+import axios from "axios";
 
 const Login = ({ errors, touched, values, status }) => {
 
@@ -14,6 +15,28 @@ const Login = ({ errors, touched, values, status }) => {
       initialValues={{ userName: '', password: '' }}
       onSubmit={(values, actions) => {
         console.log(values);
+        axios.post('https://bs-water-my-plants.herokuapp.com/api/auth/login', {
+            username: values.userName,
+            password: values.password
+          })
+          .then(function (response) {
+              console.log(response);
+            axios.get(`https://bs-water-my-plants.herokuapp.com/api/users/${response.data.user.id}`, {
+                headers:{
+                    contentType: "idk",
+                    authorization: response.data.token
+                }
+            })
+            .then(function(res) {
+                console.log(res);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }}
       render={props => (
         <Form onSubmit={props.handleSubmit}>
