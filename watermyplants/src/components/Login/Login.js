@@ -9,44 +9,40 @@ const Login = ({ errors, touched, values, status }) => {
     <div className="user-form-container">
       <header>
         <h1>Let's get savvy!</h1>
-      </header>      
-      <Form onSubmit={}>
-        <Field
-          className="input-fields"
-          component="input"
-          type="text"
-          name="username"
-          placeholder="Username"
-        />
-        <Field
-          className="input-fields"
-          component="input"
-          type="password"
-          name="password"
-          placeholder="Password"
-        />
-        <button type="submit">Sign Up!</button>
-      </Form>
+      </header>
+      <Formik
+      initialValues={{ userName: '', password: '' }}
+      onSubmit={(values, actions) => {
+        console.log(values);
+      }}
+      render={props => (
+        <Form onSubmit={props.handleSubmit}>
+          <Field
+            type="text"
+            className="input-fields"
+            onChange={props.handleChange}
+            onBlur={props.handleBlur}
+            value={props.values.userName}
+            name="userName"
+            placeholder="Username"
+          />
+          <Field
+            type="password"
+            className="input-fields"
+            onChange={props.handleChange}
+            onBlur={props.handleBlur}
+            value={props.values.password}
+            name="password"
+            placeholder="Password"
+          />
+          {props.errors.name && <div id="feedback">{props.errors.name}</div>}
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    />      
     </div>
   )
 }
 
-const formikHOC = withFormik({
-  mapPropsToValues({ username, password }) {
-    return {
-      username: username || "",
-      password: password || ""
-    }
-  },
-  validationSchema: Yup.object().shape({
-    username: Yup.string().required('Not a good username!'),
-    password: Yup.string().min(8).required('Must be longer than 8 characters!')
-  }),
-  handleSubmit(values, { setStatus, resetForm }) {
-      console.log("submit");
-  }
-})
 
-const FormFieldWithFormik = formikHOC(Login)
-
-export default FormFieldWithFormik;
+export default Login;
