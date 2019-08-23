@@ -9,7 +9,7 @@ const CreateProfile = ({ errors, touched, values, status }) => {
   return (
     <div className="user-form-container">
       <header>
-        <h1>Register to Monitor Your Plants!</h1>
+        <h1>Let's get savvy!</h1>
       </header>
       <Form>
         <Field
@@ -22,6 +22,13 @@ const CreateProfile = ({ errors, touched, values, status }) => {
         <Field
           className="input-fields"
           component="input"
+          type="text"
+          name="phone"
+          placeholder="Phone Number"
+        />
+        <Field
+          className="input-fields"
+          component="input"
           type="password"
           name="password"
           placeholder="Password"
@@ -29,27 +36,29 @@ const CreateProfile = ({ errors, touched, values, status }) => {
         <Field
           className="input-fields"
           component="input"
-          type="text"
-          name="phone"
-          placeholder="Phone Number"
+          type="password"
+          name="password_confirmation"
+          placeholder="Confirm Password"
         />
-        <button>Create Account!</button>
+        <button>Sign Up!</button>
       </Form>
     </div>
   )
 }
 
 const formikHOC = withFormik({
-  mapPropsToValues({ username, password, phone }) {
+  mapPropsToValues({ username, password, password_confirmation, phone }) {
     return {
       username: username || "",
+      phone: phone || "",
       password: password || "",
-      phone: phone || ""
+      password_confirmation: password_confirmation || ""
     }
   },
   validationSchema: Yup.object().shape({
     username: Yup.string().required('Not a good username!'),
-    password: Yup.string().min(8).required('Must be longer than 8 characters!')
+    password: Yup.string().min(8).required('Must be longer than 8 characters!'),
+    password_confirmation: Yup.string().min(8).required(`Password doesn't match!`)
   }),
   handleSubmit(values, { setStatus, resetForm }) {
     axios
