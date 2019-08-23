@@ -8,7 +8,7 @@ const Login = ({ errors, touched, values, status }) => {
   return (
     <div className="user-form-container">
       <header>
-        <h1>Let's get savvy!</h1>
+        <h1>Welcome Back!</h1>
       </header>
       <Formik
       initialValues={{ userName: '', password: '' }}
@@ -43,6 +43,5 @@ const Login = ({ errors, touched, values, status }) => {
     </div>
   )
 }
-
 
 export default Login;
