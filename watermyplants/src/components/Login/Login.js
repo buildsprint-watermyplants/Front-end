@@ -36,7 +36,7 @@ const Login = ({ errors, touched, values, status }) => {
             placeholder="Password"
           />
           {props.errors.name && <div id="feedback">{props.errors.name}</div>}
-          <button type="submit">Submit</button>
+          <button type="submit">Login</button>
         </Form>
       )}
     />      
