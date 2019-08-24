@@ -11,7 +11,7 @@ export default function Routes() {
   return (
     <div>
       {/* <Route exact path="/" component={Dashboard} /> */}
-      <PrivateRoute path="/" component={Dashboard}/>
+      <PrivateRoute exact path="/" component={Dashboard}/>
       <Route exact path="/createprofile" component={CreateProfile} />
       <Route exact path="/login" component={Login} />
     </div>

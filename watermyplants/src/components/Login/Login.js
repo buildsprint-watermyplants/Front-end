@@ -17,7 +17,7 @@ const Login = (props) => {
 
       onSubmit={(values, actions) => {
         console.log(values);
-        axios.post('https://bs-water-my-plants.herokuapp.com/api/auth/login', {
+        axios.post('/api/auth/login', {
             username: values.userName,
             password: values.password
           })
