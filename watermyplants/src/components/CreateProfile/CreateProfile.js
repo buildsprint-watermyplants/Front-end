@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withFormik, Form, Field } from 'formik';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as Yup from "yup";
 import './CreateProfile.css';
@@ -51,6 +52,7 @@ const CreateProfile = ({ errors, touched, values, status }) => {
         )}
         <button>Sign Up!</button>
       </Form>
+      <Link to="/login" style={{ color: "black", textDecoration: "none" }}>Have an account? Login</Link>
     </div>
   )
 }
