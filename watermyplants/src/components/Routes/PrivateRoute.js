@@ -12,7 +12,8 @@ const PrivateRoute = ({ component: Component, path, history, ...rest }) => {
       // if the token doesnt exist in our local storage, push back to homepage
       if (!token) {
         setLoading(false);
-        history.replace("/")
+        // you can change this to route to anything if token is not in localStorage
+        history.replace("/login")
       }
     }
     fn();

@@ -6,7 +6,8 @@ export default function Dashboard() {
   const [plants, setPlants] = useState([])
   useEffect(() => {
     axios
-      .get('https://bs-water-my-plants.herokuapp.com/')
+    // check index.js, with axios.defaults you dont have to type the main address anymore; just the endpoints. You can do something like this: axios.get('/login')
+      .get('')
       .then(res => console.log(res))
   })
   return (
