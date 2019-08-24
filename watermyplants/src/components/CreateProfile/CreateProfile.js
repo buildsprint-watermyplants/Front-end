@@ -77,7 +77,7 @@ const formikHOC = withFormik({
     password: Yup.string().min(8).required('Must be longer than 8 characters!'),
     password_confirmation: Yup.string().min(8).required(`Password doesn't match!`)
   }),
-  handleSubmit(values, { setStatus, resetForm }) {
+  handleSubmit(values, { setStatus, resetForm, props }) {
     console.log(values)
     const neededInfo = {
       username: values.username,
@@ -88,10 +88,9 @@ const formikHOC = withFormik({
       .post("/api/auth/register", neededInfo)
       .then(res => {
         console.log("handleSubmit: then: res: ", res.data);
-        localStorage.setItem("username", res.data.username);
-        localStorage.setItem("password", res.data.password);
         setStatus(res.data);
         resetForm();
+        props.history.push('/login')
       })
       .catch(err => console.error("handleSubmit: catch: err: ", err));
   }
