@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom'
 import { underline } from 'ansi-colors';
 import axios from "axios";
 
-const Login = ({ errors, touched, values, status }) => {
+const Login = (props) => {
 
   return (
     <div className="user-form-container">
       <header>
-        <h1>Welcome Back    !</h1>
+        <h1>Welcome Back!</h1>
       </header>
+
       <Formik
       initialValues={{ userName: '', password: '' }}
+
       onSubmit={(values, actions) => {
         console.log(values);
         axios.post('https://bs-water-my-plants.herokuapp.com/api/auth/login', {
@@ -21,23 +23,16 @@ const Login = ({ errors, touched, values, status }) => {
           })
           .then(function (response) {
               console.log(response);
-            axios.get(`https://bs-water-my-plants.herokuapp.com/api/users/${response.data.user.id}`, {
-                headers:{
-                    contentType: "idk",
-                    authorization: response.data.token
-                }
-            })
-            .then(function(res) {
-                console.log(res);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
+              localStorage.setItem("id", response.data.user.id);
+              localStorage.setItem("token", response.data.token);
+              props.history.push("/");
+
           })
           .catch(function (error) {
             console.log(error);
           });
       }}
+
       render={props => (
         <Form onSubmit={props.handleSubmit}>
           <Field
