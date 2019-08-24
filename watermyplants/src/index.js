@@ -8,7 +8,7 @@ import App from './App';
 
 // with this you dont have to type the full url
 // do this: axios.get(/login).then().catch()
-axios.defaults.baseURL = 'https://bs-lifegpa.herokuapp.com';
+axios.defaults.baseURL = 'https://bs-water-my-plants.herokuapp.com';
 
 
 // this will place the token we stored to local storage to the authorization header
