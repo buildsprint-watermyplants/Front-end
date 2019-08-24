@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as Yup from "yup";
 import './CreateProfile.css';
 
 const CreateProfile = ({ errors, touched, values, status }) => {
   const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    if (status) {
+      setUsers([...users, status]);
+    }
+  }, [status]);
   return (
     <div className="user-form-container">
       <header>
@@ -19,6 +26,9 @@ const CreateProfile = ({ errors, touched, values, status }) => {
           name="username"
           placeholder="Username"
         />
+        {touched.username && errors.username && (
+          <p>{errors.username}</p>
+        )}
         <Field
           className="input-fields"
           component="input"
@@ -33,6 +43,9 @@ const CreateProfile = ({ errors, touched, values, status }) => {
           name="password"
           placeholder="Password"
         />
+        {touched.password && errors.password && (
+          <p>{errors.password}</p>
+        )}
         <Field
           className="input-fields"
           component="input"
@@ -40,8 +53,12 @@ const CreateProfile = ({ errors, touched, values, status }) => {
           name="password_confirmation"
           placeholder="Confirm Password"
         />
+        {touched.password_confirmation && errors.password_confirmation && (
+          <p>{errors.password_confirmation}</p>
+        )}
         <button>Sign Up!</button>
       </Form>
+      <Link to="/login" style={{ color: "black", textDecoration: "none" }}>Have an account? Login</Link>
     </div>
   )
 }
@@ -61,10 +78,16 @@ const formikHOC = withFormik({
     password_confirmation: Yup.string().min(8).required(`Password doesn't match!`)
   }),
   handleSubmit(values, { setStatus, resetForm }) {
+    console.log(values)
+    const neededInfo = {
+      username: values.username,
+      password: values.password,
+      phoneNumber: values.phone
+    }
     axios
-      .post("https://reqres.in/api/users", values)
+      .post("/api/auth/register", neededInfo)
       .then(res => {
-        console.log("handleSubmit: then: res: ", res);
+        console.log("handleSubmit: then: res: ", res.data);
         setStatus(res.data);
         resetForm();
       })
