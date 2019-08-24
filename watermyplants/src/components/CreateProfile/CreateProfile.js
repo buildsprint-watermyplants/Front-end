@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as Yup from "yup";
 import './CreateProfile.css';
 
 const CreateProfile = ({ errors, touched, values, status }) => {
   const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    if (status) {
+      setUsers([...users, status]);
+    }
+  }, [status]);
   return (
     <div className="user-form-container">
       <header>
@@ -51,6 +58,7 @@ const CreateProfile = ({ errors, touched, values, status }) => {
         )}
         <button>Sign Up!</button>
       </Form>
+      <Link to="/login" style={{ color: "black", textDecoration: "none" }}>Have an account? Login</Link>
     </div>
   )
 }
@@ -69,16 +77,22 @@ const formikHOC = withFormik({
     password: Yup.string().min(8).required('Must be longer than 8 characters!'),
     password_confirmation: Yup.string().min(8).required(`Password doesn't match!`)
   }),
-  // handleSubmit(values, { setStatus, resetForm }) {
-  //   axios
-  //     .post("https://reqres.in/api/users", values)
-  //     .then(res => {
-  //       console.log("handleSubmit: then: res: ", res);
-  //       setStatus(res.data);
-  //       resetForm();
-  //     })
-  //     .catch(err => console.error("handleSubmit: catch: err: ", err));
-  // }
+  handleSubmit(values, { setStatus, resetForm }) {
+    console.log(values)
+    const neededInfo = {
+      username: values.username,
+      password: values.password,
+      phoneNumber: values.phone
+    }
+    axios
+      .post("/api/auth/register", neededInfo)
+      .then(res => {
+        console.log("handleSubmit: then: res: ", res.data);
+        setStatus(res.data);
+        resetForm();
+      })
+      .catch(err => console.error("handleSubmit: catch: err: ", err));
+  }
 })
 
 const FormFieldWithFormik = formikHOC(CreateProfile)
