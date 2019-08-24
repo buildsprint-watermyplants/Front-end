@@ -88,6 +88,8 @@ const formikHOC = withFormik({
       .post("/api/auth/register", neededInfo)
       .then(res => {
         console.log("handleSubmit: then: res: ", res.data);
+        localStorage.setItem("username", res.data.username);
+        localStorage.setItem("password", res.data.password);
         setStatus(res.data);
         resetForm();
       })
