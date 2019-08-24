@@ -4,16 +4,32 @@ import data from '../../dummyData';
 
 export default function Dashboard() {
 
-  const [plants, setPlants] = useState([])
+  const [userData, setUserData] = useState()
   useEffect(() => {
-    axios
-    // check index.js, with axios.defaults you dont have to type the main address anymore; just the endpoints. You can do something like this: axios.get('/login')
-      .get('')
-      .then(res => console.log(res))
-  })
+    axios.get(`https://bs-water-my-plants.herokuapp.com/api/users/${localStorage.id}`, {
+      headers: {
+        contentType: "application/JSON",
+        authorization: localStorage.token
+      }
+    })
+      .then(function (res) {
+        console.log(res);
+        setUserData(res.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }, [])
+
+  if(!userData){
+    return(
+    <h1> We Are Retrieving your data from the sky </h1>
+    )
+  }
+
   return (
     <div>
-      <p>{data.plants[0].plantName}</p>
+      <h1>{userData.username}</h1>
     </div>
   )
 }
