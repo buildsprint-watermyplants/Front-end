@@ -19,6 +19,9 @@ const CreateProfile = ({ errors, touched, values, status }) => {
           name="username"
           placeholder="Username"
         />
+        {touched.username && errors.username && (
+          <p>{errors.username}</p>
+        )}
         <Field
           className="input-fields"
           component="input"
@@ -33,6 +36,9 @@ const CreateProfile = ({ errors, touched, values, status }) => {
           name="password"
           placeholder="Password"
         />
+        {touched.password && errors.password && (
+          <p>{errors.password}</p>
+        )}
         <Field
           className="input-fields"
           component="input"
@@ -40,6 +46,9 @@ const CreateProfile = ({ errors, touched, values, status }) => {
           name="password_confirmation"
           placeholder="Confirm Password"
         />
+        {touched.password_confirmation && errors.password_confirmation && (
+          <p>{errors.password_confirmation}</p>
+        )}
         <button>Sign Up!</button>
       </Form>
     </div>
@@ -60,16 +69,16 @@ const formikHOC = withFormik({
     password: Yup.string().min(8).required('Must be longer than 8 characters!'),
     password_confirmation: Yup.string().min(8).required(`Password doesn't match!`)
   }),
-  handleSubmit(values, { setStatus, resetForm }) {
-    axios
-      .post("https://reqres.in/api/users", values)
-      .then(res => {
-        console.log("handleSubmit: then: res: ", res);
-        setStatus(res.data);
-        resetForm();
-      })
-      .catch(err => console.error("handleSubmit: catch: err: ", err));
-  }
+  // handleSubmit(values, { setStatus, resetForm }) {
+  //   axios
+  //     .post("https://reqres.in/api/users", values)
+  //     .then(res => {
+  //       console.log("handleSubmit: then: res: ", res);
+  //       setStatus(res.data);
+  //       resetForm();
+  //     })
+  //     .catch(err => console.error("handleSubmit: catch: err: ", err));
+  // }
 })
 
 const FormFieldWithFormik = formikHOC(CreateProfile)

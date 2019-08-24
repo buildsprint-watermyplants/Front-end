@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import data from '../../dummyData';
 
 export default function Dashboard() {
 
@@ -12,6 +13,7 @@ export default function Dashboard() {
   })
   return (
     <div>
+      <p>{data.plants[0].plantName}</p>
     </div>
   )
 }
