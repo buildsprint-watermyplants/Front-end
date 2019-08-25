@@ -5,6 +5,7 @@ import data from '../../dummyData';
 export default function Dashboard() {
 
   const [userData, setUserData] = useState()
+
   useEffect(() => {
     axios.get(`https://bs-water-my-plants.herokuapp.com/api/users/${localStorage.id}`, {
       headers: {
@@ -21,15 +22,15 @@ export default function Dashboard() {
       })
   }, [])
 
-  if(!userData){
-    return(
-    <h1> We Are Retrieving your data from the sky </h1>
+  if (!userData) {
+    return (
+      <h1> We Are Retrieving your data from the sky </h1>
     )
   }
 
   return (
     <div>
-      <h1>{userData.username}</h1>
+      <h1>Welcome {userData.username}!</h1>
     </div>
   )
 }

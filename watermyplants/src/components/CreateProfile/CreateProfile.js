@@ -58,7 +58,7 @@ const CreateProfile = ({ errors, touched, values, status }) => {
         )}
         <button>Sign Up!</button>
       </Form>
-      <Link to="/login" style={{ color: "black", textDecoration: "none" }}>Have an account? Login</Link>
+      <Link to="/login" style={{ color: "black", textDecoration: "none", fontFamily: 'Pacifico' }}>Have an account? Login</Link>
     </div>
   )
 }
