@@ -39,6 +39,9 @@ const CreateProfile = ({ errors, touched, values, status }) => {
         />
         <button>Add Plant!</button>
       </Form>
+      {plants.map(plant => (
+        <p key={plant.id}>{plant.plantName}</p>
+      ))}
     </div>
   )
 }

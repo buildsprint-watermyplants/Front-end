@@ -36,7 +36,8 @@ export default function Dashboard() {
   return (
     <div>
       <h1>Welcome {userData.username}!</h1>
-      <Link to="/login"><button onClick={logout}>Logout</button></Link>
+      <Link to="/createplant"><button>Create a Plant!</button></Link>
+      <Link to="/login"><button onClick={logout}>Logout {userData.username}</button></Link>
     </div>
   )
 }
