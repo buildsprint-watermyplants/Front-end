@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import data from '../../dummyData';
+import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
 
@@ -22,6 +23,10 @@ export default function Dashboard() {
       })
   }, [])
 
+  const logout = () => {
+    localStorage.clear()
+  }
+
   if (!userData) {
     return (
       <h1> We Are Retrieving your data from the sky </h1>
@@ -31,6 +36,7 @@ export default function Dashboard() {
   return (
     <div>
       <h1>Welcome {userData.username}!</h1>
+      <Link to="/login"><button onClick={logout}>Logout</button></Link>
     </div>
   )
 }
