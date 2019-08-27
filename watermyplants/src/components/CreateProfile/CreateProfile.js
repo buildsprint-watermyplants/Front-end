@@ -58,7 +58,7 @@ const CreateProfile = ({ errors, touched, values, status }) => {
         )}
         <button>Sign Up!</button>
       </Form>
-      <Link to="/login" style={{ color: "black", textDecoration: "none" }}>Have an account? Login</Link>
+      <Link to="/login" style={{ color: "black", textDecoration: "none", fontFamily: 'Pacifico' }}>Have an account? Login</Link>
     </div>
   )
 }
@@ -77,7 +77,7 @@ const formikHOC = withFormik({
     password: Yup.string().min(8).required('Must be longer than 8 characters!'),
     password_confirmation: Yup.string().min(8).required(`Password doesn't match!`)
   }),
-  handleSubmit(values, { setStatus, resetForm }) {
+  handleSubmit(values, { setStatus, resetForm, props }) {
     console.log(values)
     const neededInfo = {
       username: values.username,
@@ -90,6 +90,7 @@ const formikHOC = withFormik({
         console.log("handleSubmit: then: res: ", res.data);
         setStatus(res.data);
         resetForm();
+        props.history.push('/login')
       })
       .catch(err => console.error("handleSubmit: catch: err: ", err));
   }
