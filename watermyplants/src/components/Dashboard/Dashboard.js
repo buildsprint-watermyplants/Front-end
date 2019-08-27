@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import data from '../../dummyData';
 import { Link } from 'react-router-dom';
+import PlantDisplay from '../PlantDisplay/PlantDisplay';
 
 export default function Dashboard() {
 
@@ -38,6 +39,7 @@ export default function Dashboard() {
       <h1>Welcome {userData.username}!</h1>
       <Link to="/createplant"><button>Create a Plant!</button></Link>
       <Link to="/login"><button onClick={logout}>Logout {userData.username}</button></Link>
+      <PlantDisplay plants={userData.plants}/>
     </div>
   )
 }
