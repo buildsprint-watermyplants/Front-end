@@ -4,6 +4,7 @@ import { Card } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import axios from 'axios';
 
+
 export default function PlantDisplay(props) {
     const [plants, setPlants] = useState();
 
@@ -37,7 +38,7 @@ export default function PlantDisplay(props) {
             <hr />
             <Card.Group centered itemsPerRow={3} stackable>
                 {
-                    plants.map(element => <PlantCard plant={element} />)
+                    plants.map(element => <PlantCard plant={element}/>)
                 }
             </Card.Group>
         </div>
