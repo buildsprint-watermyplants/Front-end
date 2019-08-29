@@ -5,6 +5,8 @@ import CreateProfile from '../CreateProfile/CreateProfile';
 import Login from '../Login/Login'
 import PrivateRoute from './PrivateRoute'
 import CreatePlants from '../Plants/CreatePlants';
+import EditPlant from "../Edit Components/EditPlant"
+import EditProfile from "../Edit Components/EditProfile"
 
 
 // protected comopnents will be used with PrivateRoute. You can look at what the code is doing later.
@@ -16,6 +18,8 @@ export default function Routes(props) {
       <Route exact path="/createprofile" component={CreateProfile} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/createplant" component={CreatePlants} />
+      <Route exact path="/editplant/:id" component={EditPlant}/>
+      <Route exact path="/editprofile/:id" component={EditProfile}/>
     </div>
   )
 }
