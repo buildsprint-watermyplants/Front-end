@@ -37,6 +37,7 @@ export default function Dashboard() {
   return (
     <div>
       <h1>Welcome {userData.username}!</h1>
+      <Link to={`/editprofile/${userData.id}`}><button>Edit Profile</button></Link>
       <Link to="/createplant"><button>Create a Plant!</button></Link>
       <Link to="/login"><button onClick={logout}>Logout {userData.username}</button></Link>
       <PlantDisplay plants={userData.plants}/>
