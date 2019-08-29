@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import data from '../../dummyData';
 import { Link } from 'react-router-dom';
 import PlantDisplay from '../PlantDisplay/PlantDisplay';
+import "./Dashboard.css"
 
 export default function Dashboard() {
 
@@ -35,11 +35,18 @@ export default function Dashboard() {
   }
 
   return (
-    <div>
-      <h1>Welcome {userData.username}!</h1>
-      <Link to="/createplant"><button>Create a Plant!</button></Link>
-      <Link to="/login"><button onClick={logout}>Logout {userData.username}</button></Link>
-      <PlantDisplay plants={userData.plants}/>
+    <div class="dashboard">
+      <header>
+        <h1>Welcome {userData.username}!</h1>
+        <div className="menuItems">
+          <Link to={`/editprofile/${userData.id}`}><h2>Edit Profile</h2></Link>
+          <h2>|</h2>
+          <Link to="/login"><h2 onClick={logout}>Logout</h2></Link>
+        </div>
+      </header>
+
+      <Link to="/createplant" className="addPlant"><button>+</button></Link>
+      <PlantDisplay plants={userData.plants} />
     </div>
   )
 }
