@@ -13,6 +13,7 @@
 
   .Login h1{
       color:#384f94;
+      font-family: "Courgette";
   }
   
   p {
@@ -33,6 +34,7 @@
   cursor: pointer;
   outline: none;
   -webkit-appearance: none;
+  font-family: "Courgette";
   }
   
   .Login .user-form-container {
