@@ -1,0 +1,71 @@
+.edit {
+    margin: 0 auto;
+    padding: 10px;
+    width: 750px;
+  }
+  
+  .edit .user-form-container h2 {
+    color: #578a42;
+    font-size: 1rem;
+    margin-top: 25px;
+    margin-bottom: 0px;
+  }
+
+  .edit h1{
+      color:#384f94;
+      font-family: "Courgette";
+  }
+  
+  p {
+    color: white
+  }
+  
+  .edit button {
+  max-width: 150px;
+  margin: 32px 0;
+  padding: 12px 20px;
+  border-style: none;
+  border-radius: 5px;
+  background-color:#90a1d5;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  font-size: 17px;
+  font-weight: 500;
+  color:#cfe9c4;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  font-family: "Courgette";
+  }
+  
+  .edit .user-form-container {
+    width: 460px;
+    margin: auto 100px;
+    padding: 32px;
+    background-color: #ecf1ea;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit .input-fields {
+    font-family: sans-serif;
+    margin-top: 0px;
+    padding: 0.5rem;
+    font-size: 16px;
+    width: 100%;
+    /* display: block; */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+/* 
+
+  #384f94
+  #90a1d5
+
+  #cfe9c4
+  #ecf1ea
+
+  #578a42 */
