@@ -3,13 +3,38 @@
   width: 750px;
 }
 
-h1 {
+.header-text {
   text-align: center;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Courgette', cursive;
+  color: #384F94
 }
 
-p {
-  color: white
+.quote-section {
+  background-color: #E1E6F4;
+  height: 300px;
+  width: 460px;
+  margin: 0 auto;
+}
+
+.quotes-header{
+  padding: 25px;
+  text-align: center;
+  font-family: 'Courgette', cursive;
+  color: #384F94
+}
+
+label {
+  color: #578A42;
+  font-family: 'Sarabun', medium;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.text {
+  color: #384F94;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px;
 }
 
 button {
@@ -18,8 +43,7 @@ margin: 32px 0;
 padding: 12px 20px;
 border-style: none;
 border-radius: 5px;
-background-color: #FC6E51;
-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+background-color: #384F94;
 font-family: 'Pacifico', cursive;
 font-size: 17px;
 font-weight: 500;
@@ -32,9 +56,9 @@ outline: none;
 .user-form-container {
   width: 460px;
   margin: auto auto;
+  margin-top: 25px;
   padding: 32px;
   background-color: #E3E9E1;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .form-container {
@@ -43,10 +67,10 @@ outline: none;
 }
 
 .input-fields {
-  margin-top: 32px;
+  margin-bottom: 5px;
   padding: 0.5rem;
   font-size: 16px;
-  font-family: 'Pacifico', cursive;
+  font-family: sans-serif;
   width: 100%;
   /* display: block; */
   border-radius: 4px;
