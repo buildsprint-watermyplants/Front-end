@@ -14,51 +14,59 @@ const CreateProfile = ({ errors, touched, values, status }) => {
     }
   }, [status]);
   return (
-    <div className="user-form-container">
-      <header>
-        <h1>Let's get savvy!</h1>
-      </header>
-      <Form>
-        <Field
-          className="input-fields"
-          component="input"
-          type="text"
-          name="username"
-          placeholder="Username"
-        />
-        {touched.username && errors.username && (
-          <p>{errors.username}</p>
-        )}
-        <Field
-          className="input-fields"
-          component="input"
-          type="text"
-          name="phone"
-          placeholder="Phone Number"
-        />
-        <Field
-          className="input-fields"
-          component="input"
-          type="password"
-          name="password"
-          placeholder="Password"
-        />
-        {touched.password && errors.password && (
-          <p>{errors.password}</p>
-        )}
-        <Field
-          className="input-fields"
-          component="input"
-          type="password"
-          name="password_confirmation"
-          placeholder="Confirm Password"
-        />
-        {touched.password_confirmation && errors.password_confirmation && (
-          <p>{errors.password_confirmation}</p>
-        )}
-        <button>Sign Up!</button>
-      </Form>
-      <Link to="/login" style={{ color: "black", textDecoration: "none", fontFamily: 'Pacifico' }}>Have an account? Login</Link>
+    <div>
+      <div className="user-form-container">
+        <header>
+          <h1 className="header-text">Let's get savvy!</h1>
+        </header>
+        <Form>
+          <label>Username</label>
+          <Field
+            className="input-fields"
+            component="input"
+            type="text"
+            name="username"
+          />
+          {touched.username && errors.username && (
+            <p>{errors.username}</p>
+          )}
+          <label>Phone Number</label>
+          <Field
+            className="input-fields"
+            component="input"
+            type="text"
+            name="phone"
+          />
+          <label>Password</label>
+          <Field
+            className="input-fields"
+            component="input"
+            type="password"
+            name="password"
+          />
+          {touched.password && errors.password && (
+            <p>{errors.password}</p>
+          )}
+          <label>Confirm password</label>
+          <Field
+            className="input-fields"
+            component="input"
+            type="password"
+            name="password_confirmation"
+          />
+          {touched.password_confirmation && errors.password_confirmation && (
+            <p>{errors.password_confirmation}</p>
+          )}
+          <button>Sign Up!</button>
+        </Form>
+        <Link to="/login" style={{ color: "black", textDecoration: "none", fontFamily: 'Courgette', fontSize: '16px' }}>Have an account? Login</Link>
+      </div>
+      <section className="quote-section">
+        <h1 className="quotes-header">Inspiring Quotes</h1>
+        <p className="text">"A garden requires patient labor and attention. Plants do not grow merely to satisfy ambitions or to fulfill good intentions. They thrive because someone expended effort on them."</p>
+        <br/>
+        <p className="text">-Liberty Hyde Bailey</p>
+      </section>
     </div>
   )
 }
