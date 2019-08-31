@@ -1,8 +1,10 @@
 .dashboard h1{
-    text-align: center;
+    text-align: left;
     line-height: 75px;
-    display: inline;
+    display: inline-block;
     margin-left: 1%;
+    font-family: "Courgette";
+    width: 75%;
 }
 
 .dashboard h2{
@@ -16,7 +18,6 @@
 
 .dashboard .menuItems{
     display: inline;
-    margin-left: 55%;
 }
 
 .dashboard button{ 
